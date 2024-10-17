@@ -1,3 +1,16 @@
+/*
+Productions
+1 program → stmts
+2 stmts → stmt stmts
+3 stmts → λ
+4 stmt → primary
+5 stmt → STRLIT
+6 stmt → λ
+7 primary → ID primary_tail
+8 primary_tail → DOT ID primary_tail
+9 primary_tail → LBR stmt RBR primary_tail
+10 primary_tai → λ
+*/
 #include <iostream>
 #include <string>
 
@@ -25,6 +38,7 @@ bool isIDstart(char c){
 bool isIDchar(char c){
     return (c=='_' || (c>='A' && c<='Z') || (c>='a' && c<='z') || (c>='0' && c<='9'));
 }
+
 
 void primary_tail(){
     if(inputText[pos]=='.'){
