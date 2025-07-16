@@ -1,0 +1,7 @@
+https SCHEME
+: COLON
+/ SLASH
+/ SLASH 
+Edge PATH
+. DOT
+com DOMAIN

@@ -1,0 +1,5 @@
+simple123 PATH
+@ AT
+gmail MAILDOMAIN
+. DOT
+com DOMAIN

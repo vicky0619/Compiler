@@ -1,0 +1,4 @@
+bison -d filename1.y
+flex filename2.l
+gcc filename1.tab.c lex.yy.c
+./a.out

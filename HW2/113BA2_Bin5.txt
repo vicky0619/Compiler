@@ -1,0 +1,20 @@
+Gender Precision: 0.9129, Recall: 0.8298, F1-Score: 0.8694
+Play Years Precision: 0.8710, Recall: 0.8117, F1-Score: 0.8350
+Racket Handed Precision: 0.9757, Recall: 0.9739, F1-Score: 0.9748
+Level Precision: 0.8747, Recall: 0.8181, F1-Score: 0.8411
+
+0.76227
+
+
+0.95 0.9097
+Gender Precision: 0.9162, Recall: 0.8928, F1-Score: 0.9043
+Play Years Precision: 0.9011, Recall: 0.8843, F1-Score: 0.8922
+Racket Handed Precision: 0.9719, Recall: 0.9665, F1-Score: 0.9692
+Level Precision: 0.9097, Recall: 0.8828, F1-Score: 0.8952
+
+
+0.94
+Gender Precision: 0.9302, Recall: 0.9072, F1-Score: 0.9186
+Play Years Precision: 0.9039, Recall: 0.8825, F1-Score: 0.8923
+Racket Handed Precision: 0.9608, Recall: 0.9590, F1-Score: 0.9599
+Level Precision: 0.9161, Recall: 0.8825, F1-Score: 0.8977
