@@ -1,57 +1,109 @@
-# Compiler Coursework Repository
+# Compiler Construction: Coursework & Final Project
 
-This repository contains coursework and projects related to compiler construction and programming language processing. The repository is organized into four main directories, each representing homework assignments and a final project.
+## Introduction
 
-## Repository Structure
+This repository documents my journey through the principles of compiler construction, from foundational concepts to the implementation of a complete, multi-stage compiler. It contains a series of homework assignments that build upon each other, culminating in a final project that compiles a custom Lisp-like language.
+
+## Learning Path & Project Structure
+
+The repository is structured as a progression of complexity, demonstrating a systematic approach to learning compiler design.
 
 ```
 Compiler/
-├── HW1/
-├── HW2/
-├── HW3/
-├── final/
+├── HW1/    # Manual implementation of core parsing concepts
+├── HW2/    # Practical lexical analysis using Flex
+├── HW3/    # Advanced parsing with Lex/Yacc
+└── final/  # A complete, multi-stage compiler
 ```
 
-### HW1
+-----
 
-*Contents unavailable for detailed outline.*
+## Detailed Breakdown
 
-### HW2
+### HW1: Manual Parser & Evaluator
 
-*Contents unavailable for detailed outline.*
+This assignment focused on understanding parsing fundamentals without relying on generator tools.
 
-### HW3
+  * **Part A: Recursive Descent Parser**
 
-Contains a variety of source code files, documentation, and problem statements focused on practical compiler topics:
+      * Manually implemented a top-down, recursive descent parser in C++ for a given grammar.
+      * Includes a hand-written lexical scanner to tokenize the input stream.
+      * Demonstrates a foundational understanding of how to implement context-free grammars and parsing logic from scratch.
 
-- **Lex/Yacc Source Files**:  
-  - `3A.l`, `3A.y`, `3B.l`, `3B.y`, `fc.l`, `fc.y`, `rsp.l`, `rsp.y`
-- **Generated Files**:  
-  - `3A.tab.c`, `3A.tab.h`, `rsp.tab.c`, `rsp.tab.h`, `lex.yy.c`
-- **Test/Input Files**:  
-  - `input.txt`, `A.txt`, `1131BA3a.txt`, `1131BA3b.txt`
-- **Problem Descriptions (PDFs)**:  
-  - `3A_Stack base machine.pdf`, `3B_Matrix Calculator.pdf`, `Function Calculator.pdf`, `Rails Station Problem.pdf`
-- **Other Resources**:  
-  - `problem1131BA3a.zip`, `problem1131BA3b.zip`, `problem1131HW3A.zip`
-  - `編譯方式.txt` (compilation instructions)
+  * **Part B: Polish Notation Calculator**
 
-This directory is likely focused on parser and lexical analyzer design, stack-based machine simulation, matrix and function calculators, and more.
+      * Developed an evaluator for mathematical expressions written in Polish (prefix) notation.
+      * This exercise showcases the ability to process and evaluate expression trees recursively, a core concept in the semantic analysis phase of a compiler.
 
-### final
+### HW2: Lexical Analysis with Flex
 
-The final project directory contains an advanced compiler implementation:
+This assignment explored the power of lexer-generator tools.
 
-- `final.l` — Lexical analyzer specification
-- `final.y` — Syntax analyzer (parser) specification
-- `README.md` — Documentation for the final project
+  * **Part A: Data Type Recognizer**
+      * Used Flex to write regular expressions for recognizing various data types, such as `INTEGER`, `FLOAT`, and `STRING`.
+  * **Part B: Python-to-C++ Translator**
+      * Implemented a simple source-to-source translator using Flex to convert basic Python syntax (like `print`, comments, and indentation-based blocks) into equivalent C++ code.
 
-## Summary
+### HW3: Advanced Parsing with Lex/Yacc
 
-- **HW1 & HW2**: Early compiler homework assignments (details unavailable)
-- **HW3**: Practical programming assignments on lexical analysis, parsing, and virtual machines
-- **final**: Complete compiler project integrating lexing and parsing
+This set of assignments involved using Flex and Bison (Yacc) together to solve more complex problems, including:
 
----
+  * A stack-based machine simulator.
+  * A matrix and function calculator.
+  * Solving logic problems like the "Rails Station Problem".
 
-This repository provides a hands-on experience in building compilers, covering topics from lexical analysis to full language parsing and implementation.
+This demonstrates experience in combining lexical and syntax analysis to build functional applications.
+
+### `final`: A Complete Mini-Lisp Compiler
+
+The final project integrates all learned concepts into a single, cohesive compiler for a custom "Mini-Lisp" language.
+
+#### **Architecture**
+
+```mermaid
+graph TD
+    A[Source Code (.lsp)] --> B(1. Lexer)
+    B --> C(2. Parser)
+    C --> D(3. Semantic Analyzer)
+    D --> E(4. Code Generator)
+    E --> F[Final Output]
+```
+
+#### **Modules**
+
+1.  **Lexer**: Scans source code and produces tokens (implemented with Flex).
+2.  **Parser**: Validates syntax against the language grammar and builds an Abstract Syntax Tree (AST) (implemented with Bison).
+3.  **Semantic Analyzer**: Traverses the AST to perform type checking and scope resolution.
+4.  **Code Generator**: Takes the validated AST and translates it into a lower-level representation.
+
+#### **How to Run the Final Project**
+
+```bash
+# Navigate to the 'final' directory
+cd final
+
+# Generate and compile the source files (a Makefile would automate this)
+bison -d -o final.tab.c final.y
+gcc -c -g -I.. final.tab.c
+flex -o lex.yy.c final.l
+gcc -c -g -I.. lex.yy.c
+gcc -o final final.tab.o lex.yy.o
+
+# Run the compiler on an example file
+./final < your_program.lsp
+```
+
+#### **Example Mini-Lisp Program**
+
+```lisp
+; Define a global variable
+(define pi 3)
+
+; Define a function to calculate the area of a circle
+(fun circleArea (r)
+  (* pi (* r r))
+)
+
+; Call the function and print the result
+(print-num (circleArea 10))
+```
